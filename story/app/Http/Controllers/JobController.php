@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\JobFormRequest;
 use App\Job;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Mail;
 use App\User;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class JobController extends Controller {
 	/**
@@ -20,34 +20,30 @@ class JobController extends Controller {
 	}
 	public function save(JobFormRequest $request, Job $job) {
 
-                        $data = [ 'senderMessage' => 'Message'];
-
-                        $moderator = User::where('name','moderator')->first();
-
 		$event = $job->where('email', $request->email)->first();
 
 		if ($event) {
 			$event->update($request->except('_token'));
-			Session::flash('success', 'Your job offer now is updated!');
+			Session::flash('success', 'Your job application now is updated!');
 
 		} else {
 
-			Mail::send('emails.manager', ['title' => $request->title ,'description' =>'Your submission is in moderation, give us a couple of hours for a response'] , function ($m) use ($request) {
+			$new_applic = $job->create($request->except('_token'));
+			$moderator = User::where('name', 'moderator')->first();
 
-				$m->from( config('constants.SERVER_EMAIL') , 'Story');
-				$m->replyTo( config('constants.SERVER_EMAIL') );
-				$m->subject('Your job offer');
+			Mail::send('emails.manager', ['title' => $request->title, 'description' => 'Your submission is in moderation, waiting for final approval!'], function ($m) use ($request) {
+				$m->from(config('constants.SERVER_EMAIL'), 'Story');
+				$m->replyTo(config('constants.SERVER_EMAIL'));
+				$m->subject('Your job application');
 				$m->to($request->email);
 			});
-			Mail::send('emails.moderator',  ['title' => $request->title ,'description' => $request->description] , function ($m) use ($moderator) {
-				$m->from( config('constants.SERVER_EMAIL') , 'Story');
-				$m->replyTo( config('constants.SERVER_EMAIL') );
-				$m->subject('New job offer');
-				$m->to( $moderator->email);
+			Mail::send('emails.moderator', ['title' => $request->title, 'email' => $request->email, 'description' => $request->description, 'id' => $new_applic->id], function ($m) use ($moderator) {
+				$m->from(config('constants.SERVER_EMAIL'), 'Story');
+				$m->replyTo(config('constants.SERVER_EMAIL'));
+				$m->subject('New job applicant');
+				$m->to($moderator->email);
 			});
-
-			$job->create($request->except('_token'));
-			Session::flash('success', 'Your submission is in moderation, give us a couple of hours for a response!');
+			Session::flash('success', 'Your submission is in moderation, waiting for final approval!');
 		}
 
 		return redirect()->back();

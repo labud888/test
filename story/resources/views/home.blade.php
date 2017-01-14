@@ -8,7 +8,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                   Go to job-application fill out a form and publish a job offer.
                 </div>
             </div>
         </div>

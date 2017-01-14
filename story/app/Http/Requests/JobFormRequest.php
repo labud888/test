@@ -38,7 +38,7 @@ class JobFormRequest extends Request {
 			return new JsonResponse($errors, 422);
 		}
 
-		return $this->redirector->to('/#form')
+		return $this->redirector->to('/job')
 			->withInput($this->except($this->dontFlash))
 			->withErrors($errors, $this->errorBag);
 	}

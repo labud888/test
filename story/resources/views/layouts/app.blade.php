@@ -48,7 +48,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
-                     <li><a href="{{ url('/job') }}">Job</a></li>
+                     <li><a href="{{ url('/job') }}">Job-application</a></li>
                      <li><a href="{{ url('/job-dashboard') }}">Dashboard</a></li>
                 </ul>
 

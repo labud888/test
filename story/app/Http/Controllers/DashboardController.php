@@ -11,8 +11,10 @@ class DashboardController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index(Job $job) {
-		//$conf = config('constants.ADMIN_EMAIL');
-		$jobs = $job->where('status', 2)->get();
-		return view('dashboard')->with(compact('jobs', 'conf'));
+
+		$jobs = $job->where('status', '=', 1)->get();
+
+		return view('dashboard')->with(compact('jobs'));
+
 	}
 }

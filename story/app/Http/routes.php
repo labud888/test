@@ -18,6 +18,11 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
 Route::get('/job', 'JobController@index');
-Route::post('/job-aplication', 'JobController@save');
+
+Route::post('/job-application', 'JobController@save');
+
 Route::get('/job-dashboard', 'DashboardController@index');
+
+Route::get('/job-response/{id?}/{status?}', 'StatusController@index');

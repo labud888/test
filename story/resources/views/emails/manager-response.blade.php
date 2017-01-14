@@ -6,7 +6,6 @@
   <div class="panel-heading"><h1>Job Application</h1></div>
   <div class="panel-body">
       <p><strong>Job Title:</strong> {{$title}}</p>
-      <p><strong>Message:</strong> {{$description}}</p>
   </div>
 </div>
 @endsection
