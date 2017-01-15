@@ -31,10 +31,10 @@ class JobController extends Controller {
 			$new_applic = $job->create($request->except('_token'));
 			$moderator = User::where('name', 'moderator')->first();
 
-			Mail::send('emails.manager', ['title' => $request->title, 'description' => 'Your submission is in moderation, waiting for final approval!'], function ($m) use ($request) {
+			Mail::send('emails.manager', ['title' => $request->title, 'description' => 'Your  job application is in moderation, waiting for final approval!'], function ($m) use ($request) {
 				$m->from(config('constants.SERVER_EMAIL'), 'Story');
 				$m->replyTo(config('constants.SERVER_EMAIL'));
-				$m->subject('Your job application');
+				$m->subject('Job application');
 				$m->to($request->email);
 			});
 			Mail::send('emails.moderator', ['title' => $request->title, 'email' => $request->email, 'description' => $request->description, 'id' => $new_applic->id], function ($m) use ($moderator) {
