@@ -12,12 +12,12 @@
                     <ul>
                          <li>user 1</li>
                         <li>username 'manager' </li>
-                        <li>email  'your real email for testing propouse'</li>
-                        <li> password  'must be at least 6 characters'</li>
+                        <li>email  'your real email for testing propouse'  manager@gmail.com</li>
+                        <li> password  'must be at least 6 characters'     123456</li>
                          <li>user 2</li>
                         <li>username 'moderator' </li>
-                        <li>email  'your real email for testing propouse'</li>
-                        <li> password  'must be at least 6 characters'</li>
+                        <li>email  'your real email for testing propouse' current is moderator@gmail.com</li>
+                        <li>password  'must be at least 6 characters'    123456</li>
                     </ul>
                 </div>
             </div>

@@ -12,8 +12,10 @@ class CreateJobAplicTable extends Migration {
 	public function up() {
 		Schema::create('job_aplic', function (Blueprint $table) {
 			$table->increments('id');
-			$table->string('email')->nullable();
-			$table->boolean('status')->default(1);
+			$table->string('title', 100)->nullable();
+			$table->string('email', 255)->nullable();
+			$table->mediumText('description')->nullable();
+			$table->boolean('status')->default(2);
 			$table->timestamps();
 		});
 	}

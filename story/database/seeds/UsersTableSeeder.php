@@ -12,13 +12,13 @@ class UsersTableSeeder extends Seeder {
 		DB::table('users')->delete();
 		App\User::create([
 			'name' => 'manager',
-			'email' => 'manager@gmail.com',
-			'password' => bcrypt('123'),
+			'email' => config('constants.MANAGER_EMAIL'),
+			'password' => bcrypt('123456'),
 		]);
 		App\User::create([
 			'name' => 'moderator',
-			'email' => 'moderator@gmail.com',
-			'password' => bcrypt('123'),
+			'email' => config('constants.MODERATOR_EMAIL'),
+			'password' => bcrypt('123456'),
 		]);
 	}
 }

@@ -5,7 +5,7 @@
     <div class="alert alert-success">
         <ul>
             <li>{!! \Session::get('success') !!}</li>
-            <li><a href="{{ url('/job-dashboard') }}">Go to Dashboard</a></li>
+            <li>Go to Dashboard</li>
         </ul>
     </div>
 @endif
