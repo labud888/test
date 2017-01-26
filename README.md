@@ -7,8 +7,9 @@ Test
 
  1. Run composer update to install dependencies
  2. Configure .env file with your credentials (rename .env.example to .env)
- 3. Change emails in config/constants for manager and moderator to live test
- 4. Create database 'story'
- 5. Run php artisan migrate:refresh --seed // to create and fill db tables 
- 6. Run composer dump-autoload
- 7. Run php artisan serve. This command will start a development server at http://localhost:8000:
+ 3. Run php artisan key:generate
+ 4. Change emails in config/constants for manager and moderator to live test
+ 5. Create database 'story'
+ 6. Run php artisan migrate:refresh --seed // to create and fill db tables 
+ 7. Run composer dump-autoload
+ 8. Run php artisan serve. This command will start a development server at http://localhost:8000:
